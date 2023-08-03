@@ -1,11 +1,9 @@
 {
  "cells": [
   {
-   "cell_type": "code",
-   "execution_count": null,
-   "id": "f2bd60ea-d26c-4cec-9352-20b6ec46157b",
+   "cell_type": "markdown",
+   "id": "2d7fbbc3-6703-4450-80ba-17cf23dbacab",
    "metadata": {},
-   "outputs": [],
    "source": [
     "\n",
     "# Lab | Customer Analysis Round 4\n",
@@ -30,7 +28,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 1,
+   "execution_count": 4,
    "id": "75e980bc-f9ab-4e36-900f-b9ed50ed88c4",
    "metadata": {
     "tags": []
@@ -47,7 +45,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 2,
+   "execution_count": 5,
    "id": "a40992f3-9e98-421b-9cea-6705156bf953",
    "metadata": {
     "tags": []
@@ -83,7 +81,7 @@
        "dtype: object"
       ]
      },
-     "execution_count": 2,
+     "execution_count": 5,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -94,7 +92,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 3,
+   "execution_count": 6,
    "id": "ce4c6293-0101-4601-baf6-54be5936932d",
    "metadata": {
     "tags": []
@@ -114,7 +112,7 @@
        "dtype: object"
       ]
      },
-     "execution_count": 3,
+     "execution_count": 6,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -127,7 +125,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 4,
+   "execution_count": 7,
    "id": "d51febfa-4ebe-4e40-9402-7a0b9a2a90b3",
    "metadata": {
     "tags": []
@@ -155,7 +153,7 @@
        "dtype: object"
       ]
      },
-     "execution_count": 4,
+     "execution_count": 7,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -166,7 +164,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 5,
+   "execution_count": 8,
    "id": "2206bcfc-d949-4b0d-9104-8af08ba931bd",
    "metadata": {
     "tags": []
@@ -186,7 +184,7 @@
        "dtype: object"
       ]
      },
-     "execution_count": 5,
+     "execution_count": 8,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -197,7 +195,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 6,
+   "execution_count": 9,
    "id": "7ff0dd37-f45b-47a4-b379-65ae6531a09a",
    "metadata": {
     "tags": []
@@ -292,7 +290,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 7,
+   "execution_count": 10,
    "id": "17dbf395-1c7e-4956-825c-e00b35ff57f9",
    "metadata": {
     "tags": []
@@ -389,7 +387,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 11,
    "id": "a1634728-3e2f-46f5-b73e-ab8c3a3af939",
    "metadata": {},
    "outputs": [],
@@ -424,9 +422,178 @@
    ]
   },
   {
+   "cell_type": "markdown",
+   "id": "7c60ee2d-829a-4ff5-b58f-b6273457ef25",
+   "metadata": {},
+   "source": [
+    "--------------------------------------------------------STARTING LAB 5-------------------------------------------------------"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "id": "f2111a50-1b1f-441c-8803-ef800ab56965",
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "from sklearn.preprocessing import MinMaxScaler"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "id": "830aa866-1ae5-464f-bf4d-17cfc23551c8",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "y=numerical['Total Claim Amount']\n",
+    "X=numerical.drop(['Total Claim Amount'],axis=1)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "id": "34c65fd1-0601-4586-8df2-73178037a31d",
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "(9134, 7)\n"
+     ]
+    },
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>Customer Lifetime Value</th>\n",
+       "      <th>Income</th>\n",
+       "      <th>Monthly Premium Auto</th>\n",
+       "      <th>Months Since Last Claim</th>\n",
+       "      <th>Months Since Policy Inception</th>\n",
+       "      <th>Number of Open Complaints</th>\n",
+       "      <th>Number of Policies</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>0.010629</td>\n",
+       "      <td>0.562847</td>\n",
+       "      <td>0.033755</td>\n",
+       "      <td>0.914286</td>\n",
+       "      <td>0.050505</td>\n",
+       "      <td>0.0</td>\n",
+       "      <td>0.000</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>0.062406</td>\n",
+       "      <td>0.000000</td>\n",
+       "      <td>0.139241</td>\n",
+       "      <td>0.371429</td>\n",
+       "      <td>0.424242</td>\n",
+       "      <td>0.0</td>\n",
+       "      <td>0.875</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>0.134960</td>\n",
+       "      <td>0.487763</td>\n",
+       "      <td>0.198312</td>\n",
+       "      <td>0.514286</td>\n",
+       "      <td>0.383838</td>\n",
+       "      <td>0.0</td>\n",
+       "      <td>0.125</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>0.070589</td>\n",
+       "      <td>0.000000</td>\n",
+       "      <td>0.189873</td>\n",
+       "      <td>0.514286</td>\n",
+       "      <td>0.656566</td>\n",
+       "      <td>0.0</td>\n",
+       "      <td>0.750</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4</th>\n",
+       "      <td>0.011245</td>\n",
+       "      <td>0.438443</td>\n",
+       "      <td>0.050633</td>\n",
+       "      <td>0.342857</td>\n",
+       "      <td>0.444444</td>\n",
+       "      <td>0.0</td>\n",
+       "      <td>0.000</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "   Customer Lifetime Value    Income  Monthly Premium Auto  \\\n",
+       "0                 0.010629  0.562847              0.033755   \n",
+       "1                 0.062406  0.000000              0.139241   \n",
+       "2                 0.134960  0.487763              0.198312   \n",
+       "3                 0.070589  0.000000              0.189873   \n",
+       "4                 0.011245  0.438443              0.050633   \n",
+       "\n",
+       "   Months Since Last Claim  Months Since Policy Inception  \\\n",
+       "0                 0.914286                       0.050505   \n",
+       "1                 0.371429                       0.424242   \n",
+       "2                 0.514286                       0.383838   \n",
+       "3                 0.514286                       0.656566   \n",
+       "4                 0.342857                       0.444444   \n",
+       "\n",
+       "   Number of Open Complaints  Number of Policies  \n",
+       "0                        0.0               0.000  \n",
+       "1                        0.0               0.875  \n",
+       "2                        0.0               0.125  \n",
+       "3                        0.0               0.750  \n",
+       "4                        0.0               0.000  "
+      ]
+     },
+     "execution_count": 18,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "transformer = MinMaxScaler().fit(X)\n",
+    "x_normalized = transformer.transform(X)\n",
+    "print(x_normalized.shape)\n",
+    "\n",
+    "\n",
+    "x_norm=pd.DataFrame(x_normalized, columns=X.columns)\n",
+    "x_norm.head()"
+   ]
+  },
+  {
    "cell_type": "code",
    "execution_count": null,
-   "id": "40cfa2cc-fe8f-478c-96c3-21484b5bb87b",
+   "id": "0ef78362-b028-463f-bfb3-8634cd4ed5db",
    "metadata": {},
    "outputs": [],
    "source": []
@@ -434,7 +601,31 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "830aa866-1ae5-464f-bf4d-17cfc23551c8",
+   "id": "26a06928-d9ca-4521-9f93-512ec4d0cd2b",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "023c6c73-4161-47fb-805c-6b1e6a75726b",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "109886ef-ac40-41ce-8168-9203fbe82abd",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "5c695dab-f694-43af-8c83-dce0753a28b0",
    "metadata": {},
    "outputs": [],
    "source": []
